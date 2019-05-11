@@ -1,48 +1,36 @@
 package main
 
 import (
-	"strconv"
+	"fmt"
 	"time"
 )
 
-const day = time.Minute * 60 * 24
-const week = day * 7
-const month = day * 31
-const year = day * 365
+const (
+	timeDay   = 24 * time.Hour
+	timeWeek  = 7 * timeDay
+	timeMonth = 30 * timeDay
+	timeYear  = 365 * timeDay
+)
 
-func duration_format(ts int) string {
-
-	since := time.Since(time.Unix(int64(ts), 0))
-
-	second_diff := since.Seconds()
-
-	if since < day {
-		switch {
-		case second_diff < 10:
-			return "just now"
-		case second_diff < 60:
-			return strconv.Itoa(int(second_diff)) + " seconds ago"
-		case second_diff < 120:
-			return "1 minute ago"
-		case second_diff < 3600:
-			return strconv.Itoa(int(second_diff/60)) + " minutes ago"
-		case second_diff < 7200:
-			return "1 hour ago"
-		case second_diff < 86400:
-			return strconv.Itoa(int(second_diff/3600)) + " hours ago"
-		}
-	}
-	if since < 2*day {
+func durationFormat(ts int) string {
+	switch delta := time.Since(time.Unix(int64(ts), 0)); {
+	case delta < 10*time.Second:
+		return "just now"
+	case delta < time.Minute:
+		return fmt.Sprintf("%v seonds ago", int(delta.Seconds()))
+	case delta < time.Hour:
+		return fmt.Sprintf("%v minutes ago", int(delta.Minutes()))
+	case delta < timeDay:
+		return fmt.Sprintf("%v hours ago", int(delta.Hours()))
+	case delta < 2*timeDay:
 		return "Yesterday"
+	case delta < timeWeek:
+		return fmt.Sprintf("%v days ago", delta/timeDay)
+	case delta < timeMonth:
+		return fmt.Sprintf("%v week(s) ago", delta/timeWeek)
+	case delta < timeYear:
+		return fmt.Sprintf("%v month(s) ago", delta/timeMonth)
+	default:
+		return fmt.Sprintf("%v year(s) ago", delta/timeYear)
 	}
-	if since < week {
-		return strconv.Itoa(int(second_diff/86400)) + " days ago"
-	}
-	if since < month {
-		return strconv.Itoa(int(second_diff/86400/7)) + " week(s) ago"
-	}
-	if since < year {
-		return strconv.Itoa(int(second_diff/86400/30)) + " month(s) ago"
-	}
-	return strconv.Itoa(int(second_diff/86400/365)) + " year(s) ago"
 }
