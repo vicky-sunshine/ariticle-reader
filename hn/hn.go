@@ -52,7 +52,7 @@ type Item struct {
 	ID          int    `json:"id"`
 	Kids        []int  `json:"kids"`
 	Score       int    `json:"score"`
-	Time        int    `json:"time"`
+	Time        int64  `json:"time"`
 	Title       string `json:"title"`
 	Type        string `json:"type"`
 

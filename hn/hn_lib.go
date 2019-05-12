@@ -12,8 +12,8 @@ const (
 	timeYear  = 365 * timeDay
 )
 
-func DurationFormat(ts int) string {
-	switch delta := time.Since(time.Unix(int64(ts), 0)); {
+func DurationFormat(ts int64) string {
+	switch delta := time.Since(time.Unix(ts, 0)); {
 	case delta < 10*time.Second:
 		return "just now"
 	case delta < time.Minute:
