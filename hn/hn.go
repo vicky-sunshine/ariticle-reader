@@ -11,7 +11,7 @@ var apiBase = "https://hacker-news.firebaseio.com/v0"
 
 func ItemFormat(item Item) string {
 	u, _ := url.Parse(item.URL)
-	return fmt.Sprintf("%8d  %v (%v)\n          %d points by %v %v ago | %v comments",
+	return fmt.Sprintf("%8d  %v (%v)\n          %d points by %v %v | %v comments",
 		item.ID, item.Title, u.Hostname(),
 		item.Score, item.By, DurationFormat(item.Time), item.Descendants)
 }
