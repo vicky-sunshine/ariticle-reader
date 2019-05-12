@@ -3,11 +3,11 @@ package main
 import (
 	"fmt"
 	"hn-reader/article"
-	"hn-reader/hn"
+	"hn-reader/hackernews"
 )
 
 func main() {
-	hnr := hn.NewHackerNewsReader()
+	hnr := hackernews.NewHackerNewsReader()
 	list, _ := hnr.TopArticles(10)
 	for _, v := range list {
 		fmt.Println(article.Summerized(v))

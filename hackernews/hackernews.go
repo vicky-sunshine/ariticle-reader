@@ -1,4 +1,4 @@
-package hn
+package hackernews
 
 import (
 	"encoding/json"
@@ -7,7 +7,7 @@ import (
 	"strconv"
 )
 
-type HNArticle struct {
+type HackerNewArticle struct {
 	By          string `json:"by"`
 	Descendants int    `json:"descendants"`
 	ID          int    `json:"id"`
@@ -21,16 +21,16 @@ type HNArticle struct {
 	URL  string `json:"url"`
 }
 
-func (hna HNArticle) GetID() string{
+func (hna HackerNewArticle) GetID() string{
 	return strconv.Itoa(hna.ID)
 }
-func (hna HNArticle) GetTitle() string{
+func (hna HackerNewArticle) GetTitle() string{
 	return hna.Title
 }
-func (hna HNArticle) GetAuthor() string{
+func (hna HackerNewArticle) GetAuthor() string{
 	return hna.By
 }
-func (hna HNArticle) GetTimestamp() int64{
+func (hna HackerNewArticle) GetTimestamp() int64{
 	return hna.Time
 }
 
@@ -44,8 +44,8 @@ func NewHackerNewsReader() *HackerNewsReader {
 	return hnr
 }
 
-func (hnr *HackerNewsReader) GetArticle(id string) (HNArticle, error) {
-	var ar HNArticle
+func (hnr *HackerNewsReader) GetArticle(id string) (HackerNewArticle, error) {
+	var ar HackerNewArticle
 	resp, err := http.Get(fmt.Sprintf("%s/item/%s.json", hnr.apiBase, id))
 	if err != nil {
 		return ar, err
@@ -60,7 +60,7 @@ func (hnr *HackerNewsReader) GetArticle(id string) (HNArticle, error) {
 	return ar, nil
 }
 
-func (hnr *HackerNewsReader) TopArticles(number int) ([]HNArticle, error) {
+func (hnr *HackerNewsReader) TopArticles(number int) ([]HackerNewArticle, error) {
 	resp, err := http.Get(fmt.Sprintf("%s/topstories.json", hnr.apiBase))
 	if err != nil {
 		return nil, err
@@ -74,7 +74,7 @@ func (hnr *HackerNewsReader) TopArticles(number int) ([]HNArticle, error) {
 		return nil, err
 	}
 
-	var ars []HNArticle
+	var ars []HackerNewArticle
 	for _, v := range ids[:number] {
 		ar, err := hnr.GetArticle(strconv.Itoa(v))
 		if err != nil {
