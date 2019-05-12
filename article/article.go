@@ -13,7 +13,7 @@ type Article interface {
 }
 
 type ArticleReader interface {
-	TopArticles(number int) ([]Article, error)
+	TopArticles(number int) ([]string, error)
 	GetArticle(id string) (Article, error)
 }
 

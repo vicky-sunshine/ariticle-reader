@@ -21,16 +21,16 @@ type HackerNewArticle struct {
 	URL  string `json:"url"`
 }
 
-func (hna HackerNewArticle) GetID() string{
+func (hna HackerNewArticle) GetID() string {
 	return strconv.Itoa(hna.ID)
 }
-func (hna HackerNewArticle) GetTitle() string{
+func (hna HackerNewArticle) GetTitle() string {
 	return hna.Title
 }
-func (hna HackerNewArticle) GetAuthor() string{
+func (hna HackerNewArticle) GetAuthor() string {
 	return hna.By
 }
-func (hna HackerNewArticle) GetTimestamp() int64{
+func (hna HackerNewArticle) GetTimestamp() int64 {
 	return hna.Time
 }
 
@@ -60,7 +60,7 @@ func (hnr *HackerNewsReader) GetArticle(id string) (HackerNewArticle, error) {
 	return ar, nil
 }
 
-func (hnr *HackerNewsReader) TopArticles(number int) ([]HackerNewArticle, error) {
+func (hnr *HackerNewsReader) TopArticles(number int) ([]string, error) {
 	resp, err := http.Get(fmt.Sprintf("%s/topstories.json", hnr.apiBase))
 	if err != nil {
 		return nil, err
@@ -74,14 +74,10 @@ func (hnr *HackerNewsReader) TopArticles(number int) ([]HackerNewArticle, error)
 		return nil, err
 	}
 
-	var ars []HackerNewArticle
+	var idStrs []string
 	for _, v := range ids[:number] {
-		ar, err := hnr.GetArticle(strconv.Itoa(v))
-		if err != nil {
-			return ars, err
-		}
-		ars = append(ars, ar)
+		idStrs = append(idStrs, strconv.Itoa(v))
 	}
-	return ars, nil
-}
 
+	return idStrs, nil
+}
