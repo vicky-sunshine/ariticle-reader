@@ -26,7 +26,7 @@ func PrintItems(index int, item Item) {
 	u, _ := url.Parse(item.URL)
 	fmt.Printf("%3d.  %v (%v)\n", index, item.Title, u.Hostname())
 
-	fmt.Printf("      %d points by %v %v ago | %v comments\n", item.Score, item.By, duration_format(item.Time), len(item.Kids))
+	fmt.Printf("      %d points by %v %v ago | %v comments\n", item.Score, item.By, durationFormat(item.Time), len(item.Kids))
 }
 
 func TopItems() ([]int, error) {
