@@ -1,4 +1,4 @@
-package main
+package hn
 
 import (
 	"fmt"
@@ -12,7 +12,7 @@ const (
 	timeYear  = 365 * timeDay
 )
 
-func durationFormat(ts int) string {
+func DurationFormat(ts int) string {
 	switch delta := time.Since(time.Unix(int64(ts), 0)); {
 	case delta < 10*time.Second:
 		return "just now"
