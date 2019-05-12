@@ -41,7 +41,7 @@ func main() {
 	}
 
 	rootCmd.AddCommand(cmdHackerNews, cmdRedditGolang)
-	rootCmd.PersistentFlags().IntVar(&showNum, "number", 10, "Use Viper for configuration")
+	rootCmd.PersistentFlags().IntVarP(&showNum, "number", "n", 10, "Specify number of top articles")
 	rootCmd.Execute()
 
 }
