@@ -1,10 +1,10 @@
 package main
 
 import (
+	"artread/article"
+	"artread/hackernews"
+	"artread/reddit"
 	"fmt"
-	"hn-reader/article"
-	"hn-reader/hackernews"
-	"hn-reader/reddit"
 
 	"github.com/spf13/cobra"
 )
@@ -12,17 +12,17 @@ import (
 func main() {
 	var showNum int
 
-	var rootCmd = &cobra.Command{Use: "hn-reader"}
+	var rootCmd = &cobra.Command{Use: "artread"}
 
 	var cmdHackerNews = &cobra.Command{
 		Use:   "hkns",
 		Short: "Read hacker news",
 		Run: func(cmd *cobra.Command, args []string) {
-			hnr := hackernews.NewHackerNewsReader()
+			hnr := hackernews.NewHNReader("https://hacker-news.firebaseio.com/v0")
 			list, _ := hnr.TopArticles(showNum)
 			for _, v := range list {
 				ar, _ := hnr.GetArticle(v)
-				fmt.Println(article.Summerized(ar))
+				fmt.Println(article.Summarized(ar))
 			}
 		},
 	}
@@ -31,11 +31,11 @@ func main() {
 		Use:   "rdgl",
 		Short: "Read reddit /r/golang",
 		Run: func(cmd *cobra.Command, args []string) {
-			rdr := reddit.NewRedditReader("https://www.reddit.com/r/golang")
+			rdr := reddit.NewRdtReader("https://www.reddit.com/r/golang")
 			list, _ := rdr.TopArticles(showNum)
 			for _, v := range list {
 				ar, _ := rdr.GetArticle(v)
-				fmt.Println(article.Summerized(ar))
+				fmt.Println(article.Summarized(ar))
 			}
 		},
 	}
