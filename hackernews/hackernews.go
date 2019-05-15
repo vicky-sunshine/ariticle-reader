@@ -1,3 +1,5 @@
+// Package hackernews provide the client and function for reading articles from hackernews
+// Ref: https://github.com/HackerNews/API
 package hackernews
 
 import (
@@ -7,7 +9,10 @@ import (
 	"strconv"
 )
 
-type HackerNewArticle struct {
+// HNArticle define the field of hacker news item, and
+// implements the Article interface
+// Ref: https://github.com/HackerNews/API#items
+type HNArticle struct {
 	By          string `json:"by"`
 	Descendants int    `json:"descendants"`
 	ID          int    `json:"id"`
@@ -21,31 +26,42 @@ type HackerNewArticle struct {
 	URL  string `json:"url"`
 }
 
-func (hna HackerNewArticle) GetID() string {
+// GetID implements Reader interface GetID funtion
+func (hna HNArticle) GetID() string {
 	return strconv.Itoa(hna.ID)
 }
-func (hna HackerNewArticle) GetTitle() string {
+
+// GetTitle implements Reader interface GetTitle function
+func (hna HNArticle) GetTitle() string {
 	return hna.Title
 }
-func (hna HackerNewArticle) GetAuthor() string {
+
+// GetAuthor implements Reader interface GetAuthor function
+func (hna HNArticle) GetAuthor() string {
 	return hna.By
 }
-func (hna HackerNewArticle) GetTimestamp() int64 {
+
+// GetTimestamp implements Reader interface GetTimestamp function
+func (hna HNArticle) GetTimestamp() int64 {
 	return hna.Time
 }
 
-type HackerNewsReader struct {
+// HNReader implements Reader interface to read hackernews website
+type HNReader struct {
 	apiBase string
 }
 
-func NewHackerNewsReader() *HackerNewsReader {
-	hnr := &HackerNewsReader{}
-	hnr.apiBase = "https://hacker-news.firebaseio.com/v0"
+// NewHNReader initialize an HNReader instance
+func NewHNReader(apiBase string) *HNReader {
+	hnr := &HNReader{}
+	hnr.apiBase = apiBase
 	return hnr
 }
 
-func (hnr *HackerNewsReader) GetArticle(id string) (HackerNewArticle, error) {
-	var ar HackerNewArticle
+// GetArticle returns a certain HNArticle with given id
+// Ref: https://github.com/HackerNews/API#items
+func (hnr *HNReader) GetArticle(id string) (HNArticle, error) {
+	var ar HNArticle
 	resp, err := http.Get(fmt.Sprintf("%s/item/%s.json", hnr.apiBase, id))
 	if err != nil {
 		return ar, err
@@ -60,7 +76,9 @@ func (hnr *HackerNewsReader) GetArticle(id string) (HackerNewArticle, error) {
 	return ar, nil
 }
 
-func (hnr *HackerNewsReader) TopArticles(number int) ([]string, error) {
+// TopArticles returns a list of top ariticles ids
+// Ref: https://github.com/HackerNews/API#new-top-and-best-stories
+func (hnr *HNReader) TopArticles(number int) ([]string, error) {
 	resp, err := http.Get(fmt.Sprintf("%s/topstories.json", hnr.apiBase))
 	if err != nil {
 		return nil, err
