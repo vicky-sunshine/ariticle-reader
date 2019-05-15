@@ -1,3 +1,4 @@
+// Package article define the main interface for artread projects
 package article
 
 import (
@@ -5,6 +6,7 @@ import (
 	"time"
 )
 
+// Article is used for specifying requirement field of an article
 type Article interface {
 	GetID() string
 	GetTitle() string
@@ -12,14 +14,18 @@ type Article interface {
 	GetTimestamp() int64
 }
 
-type ArticleReader interface {
+// Reader is an interface which defines required function to fetch articles from certain website
+type Reader interface {
+	// List current top articles from target website
 	TopArticles(number int) ([]string, error)
+	// Get article with specified ID from target website
 	GetArticle(id string) (Article, error)
 }
 
-func Summerized(ar Article) string {
+// Summarized function is used to one-line summarize ariticle when listing aritcles
+func Summarized(ar Article) string {
 	return fmt.Sprintf("%v  %v by %v %v",
-		ar.GetID(), ar.GetTitle(), ar.GetAuthor(), DurationFormat(ar.GetTimestamp()))
+		ar.GetID(), ar.GetTitle(), ar.GetAuthor(), durationFormat(ar.GetTimestamp()))
 }
 
 const (
@@ -29,7 +35,9 @@ const (
 	timeYear  = 365 * timeDay
 )
 
-func DurationFormat(ts int64) string {
+// durationFormat makes unix timestamp to duration from now
+// ex: "just now", "yesterday", "2 month(s) ago", ..etc
+func durationFormat(ts int64) string {
 	switch delta := time.Since(time.Unix(ts, 0)); {
 	case delta < 10*time.Second:
 		return "just now"
@@ -40,7 +48,7 @@ func DurationFormat(ts int64) string {
 	case delta < timeDay:
 		return fmt.Sprintf("%v hours ago", int(delta.Hours()))
 	case delta < 2*timeDay:
-		return "Yesterday"
+		return "yesterday"
 	case delta < timeWeek:
 		return fmt.Sprintf("%v days ago", int(delta/timeDay))
 	case delta < timeMonth:
