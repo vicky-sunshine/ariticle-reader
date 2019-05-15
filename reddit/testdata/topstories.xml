@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed
+  xmlns="http://www.w3.org/2005/Atom">
+  <category term="golang" label="r/golang"/>
+  <updated>2019-05-13T05:37:20+00:00</updated>
+  <icon>https://www.redditstatic.com/icon.png/</icon>
+  <id>/r/golang/.rss</id>
+  <link rel="self" href="https://www.reddit.com/r/golang/.rss" type="application/atom+xml" />
+  <link rel="alternate" href="https://www.reddit.com/r/golang/" type="text/html" />
+  <logo>https://b.thumbs.redditmedia.com/7BDtSXbohQaPFuaa6oCA5HtE53Flgld6rj3G7-TavDs.png</logo>
+  <subtitle>Gophers of the world unite!</subtitle>
+  <title>The Go Programming Language</title>
+  <entry>
+    <author>
+      <name>/u/suyashkumar</name>
+      <uri>https://www.reddit.com/user/suyashkumar</uri>
+    </author>
+    <category term="golang" label="r/golang"/>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href=&quot;https://www.reddit.com/user/suyashkumar&quot;&gt; /u/suyashkumar &lt;/a&gt; &lt;br/&gt; &lt;span&gt;&lt;a href=&quot;https://github.com/suyashkumar/dicom&quot;&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnu47l/high_performance_dicom_medical_image_parser_in/&quot;&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <id>t3_bnu47l</id>
+    <link href="https://www.reddit.com/r/golang/comments/bnu47l/high_performance_dicom_medical_image_parser_in/" />
+    <updated>2019-05-12T21:00:57+00:00</updated>
+    <title>High Performance DICOM Medical Image Parser in Golang</title>
+  </entry>
+  <entry>
+    <author>
+      <name>/u/stewi1014</name>
+      <uri>https://www.reddit.com/user/stewi1014</uri>
+    </author>
+    <category term="golang" label="r/golang"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class=&quot;md&quot;&gt;&lt;p&gt;I&amp;#39;m getting a little annoyed with the fact that every time I use math.Mod I&amp;#39;m having to check if it returned a negative value and then fix it so it&amp;#39;s in line with the modulo function &lt;a href=&quot;https://en.wikipedia.org/wiki/Modular_arithmetic&quot;&gt;https://en.wikipedia.org/wiki/Modular_arithmetic&lt;/a&gt;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;1 mod 3 = 1 -1 mod 3 = 2 math.Mod(1, 3) = 1 math.Mod(-1, 3) = -1 1 % 3 = 1 -1 % 3 = -1 &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;(I know it&amp;#39;s called &amp;#39;remainder&amp;#39; in the spec; it&amp;#39;s not claiming to be a modulo operation)&lt;/p&gt; &lt;p&gt;&amp;#x200B;&lt;/p&gt; &lt;p&gt;Who uses the negative return values in the real world?&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href=&quot;https://www.reddit.com/user/stewi1014&quot;&gt; /u/stewi1014 &lt;/a&gt; &lt;br/&gt; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnvik4/modulo_in_golang/&quot;&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnvik4/modulo_in_golang/&quot;&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <id>t3_bnvik4</id>
+    <link href="https://www.reddit.com/r/golang/comments/bnvik4/modulo_in_golang/" />
+    <updated>2019-05-12T23:09:13+00:00</updated>
+    <title>Modulo in Golang</title>
+  </entry>
+  <entry>
+    <author>
+      <name>/u/itmayziii</name>
+      <uri>https://www.reddit.com/user/itmayziii</uri>
+    </author>
+    <category term="golang" label="r/golang"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class=&quot;md&quot;&gt;&lt;p&gt;I have about 5 years of experience programming but mostly with higher level languages like javascript, PHP, and some Java. I&amp;#39;ve been really interested in learning Go so I decided to write a robots.txt parser to help me learn which can be found &lt;a href=&quot;https://github.com/itmayziii/robotstxt&quot;&gt;here&lt;/a&gt;. I don&amp;#39;t have anyone close to me that can give me good feedback on what &amp;quot;good&amp;quot; Go code would look like, so I&amp;#39;m posting here hoping experts can help me get better. I&amp;#39;m also new to posting to reddit so I apologize if this kind of &amp;quot;check out my work&amp;quot; post isn&amp;#39;t a good thing, but please let me know.&lt;/p&gt; &lt;p&gt;Some decisions I made along the way: * My package mainly exports an interface &lt;code&gt;RobotsExclusionProtocol&lt;/code&gt; but returns the implementation and it&amp;#39;s methods as a value instead of a pointer. My understanding of when to use pointers vs. values is that you should use pointers if your going to mutate the struct during the method or if the struct is very large and would be costly to copy all over the place. * 2 of the main ways of creating an implementation of the &lt;code&gt;RobotsExclusionProtocol&lt;/code&gt; is &lt;code&gt;NewFromFile&lt;/code&gt; and &lt;code&gt;NewFromURL&lt;/code&gt; (which does an HTTP request) functions, both of which take a channel so that you could use them with goroutines. The other method of creating an implementation is just a &lt;code&gt;New&lt;/code&gt; function that does not use channels. I decided to use channels for &lt;code&gt;NewFromFile&lt;/code&gt; and &lt;code&gt;NewFromURL&lt;/code&gt; because from my experience with NodeJS, reading a file and doing an HTTP request are asynchronous operations, so I figured they should be here as well.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href=&quot;https://www.reddit.com/user/itmayziii&quot;&gt; /u/itmayziii &lt;/a&gt; &lt;br/&gt; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnyrzp/experienced_developer_but_new_to_go_what_did_i_do/&quot;&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnyrzp/experienced_developer_but_new_to_go_what_did_i_do/&quot;&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <id>t3_bnyrzp</id>
+    <link href="https://www.reddit.com/r/golang/comments/bnyrzp/experienced_developer_but_new_to_go_what_did_i_do/" />
+    <updated>2019-05-13T04:20:53+00:00</updated>
+    <title>Experienced developer but new to Go, what did I do wrong / right in my first package?</title>
+  </entry>
+  <entry>
+    <author>
+      <name>/u/Enapiuz</name>
+      <uri>https://www.reddit.com/user/Enapiuz</uri>
+    </author>
+    <category term="golang" label="r/golang"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class=&quot;md&quot;&gt;&lt;p&gt;Hi! I just created my first open source tool, that I think may be useful. It’s a simple task runner on a directory changes.&lt;/p&gt; &lt;p&gt;With it you can: 1. Define multiple watchers that contain list of dirs and list of commands to do after any changes in that directories. 2. See just few lines of report with real-time status.&lt;/p&gt; &lt;p&gt;Here is a link &lt;a href=&quot;https://github.com/Enapiuz/multiwatch&quot;&gt;https://github.com/Enapiuz/multiwatch&lt;/a&gt;&lt;/p&gt; &lt;p&gt;There is a lot to do, like pretty error log and tests.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href=&quot;https://www.reddit.com/user/Enapiuz&quot;&gt; /u/Enapiuz &lt;/a&gt; &lt;br/&gt; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnmcwk/my_first_useful_open_source_project/&quot;&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnmcwk/my_first_useful_open_source_project/&quot;&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <id>t3_bnmcwk</id>
+    <link href="https://www.reddit.com/r/golang/comments/bnmcwk/my_first_useful_open_source_project/" />
+    <updated>2019-05-12T07:13:58+00:00</updated>
+    <title>My first useful open source project</title>
+  </entry>
+  <entry>
+    <author>
+      <name>/u/timesmaster</name>
+      <uri>https://www.reddit.com/user/timesmaster</uri>
+    </author>
+    <category term="golang" label="r/golang"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class=&quot;md&quot;&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/timestee/go-accesslog&quot;&gt;go-accesslog&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Usage:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;func AccessLog(cb func(call *accesslog.Call)) func(next http.Handler) http.Handler { return func(next http.Handler) http.Handler { return http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) { // before request,install ResponseWriter proxy call := &amp;amp;accesslog.Call{} rwProxy := accesslog.NewResponseRecorder(rw, true) accesslog.Before(call, r) next.ServeHTTP(rwProxy, r) // after request and callback accesslog.After(call, rwProxy, r) cb(call) }) } } &lt;/code&gt;&lt;/pre&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href=&quot;https://www.reddit.com/user/timesmaster&quot;&gt; /u/timesmaster &lt;/a&gt; &lt;br/&gt; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnzcxy/a_simple_http_access_logger_for_golang/&quot;&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnzcxy/a_simple_http_access_logger_for_golang/&quot;&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <id>t3_bnzcxy</id>
+    <link href="https://www.reddit.com/r/golang/comments/bnzcxy/a_simple_http_access_logger_for_golang/" />
+    <updated>2019-05-13T05:23:19+00:00</updated>
+    <title>A simple HTTP access logger for golang</title>
+  </entry>
+  <entry>
+    <author>
+      <name>/u/motojo</name>
+      <uri>https://www.reddit.com/user/motojo</uri>
+    </author>
+    <category term="golang" label="r/golang"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class=&quot;md&quot;&gt;&lt;p&gt;We&amp;#39;ve used Liquibase in one of our products at work for the last 3 years to apply migrations to MySQL databases. A few improvements we wanted were: speed, removal of Java requirement (security scanning frequently picks up new vulnerabilities in our docker containers), ability to embed migrations in our code, and ability to make comments on our SQL queries without it changing the checksums on queries. The checksum saved us a few times with early developers that make changes to migrations that are already deployed and applied to customer environments. There is a feature built-in that can migrate your existing databases from Liquibase to Rove.&lt;/p&gt; &lt;p&gt;Rove was created out of our needs:&lt;/p&gt; &lt;p&gt;&lt;a href=&quot;https://github.com/josephspurrier/rove&quot;&gt;https://github.com/josephspurrier/rove&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href=&quot;https://www.reddit.com/user/motojo&quot;&gt; /u/motojo &lt;/a&gt; &lt;br/&gt; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnqkid/rove_mysql_database_migration_tool_inspired_by/&quot;&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnqkid/rove_mysql_database_migration_tool_inspired_by/&quot;&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <id>t3_bnqkid</id>
+    <link href="https://www.reddit.com/r/golang/comments/bnqkid/rove_mysql_database_migration_tool_inspired_by/" />
+    <updated>2019-05-12T16:05:28+00:00</updated>
+    <title>Rove - MySQL database migration tool inspired by Liquibase</title>
+  </entry>
+  <entry>
+    <author>
+      <name>/u/naturalizedcitizen</name>
+      <uri>https://www.reddit.com/user/naturalizedcitizen</uri>
+    </author>
+    <category term="golang" label="r/golang"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class=&quot;md&quot;&gt;&lt;p&gt;I am a newbie to Go and have been following tutorials and a book to learn. Now, here is a scenario which I am trying but have not been successful with the Go channel feature.&lt;/p&gt; &lt;p&gt;Suppose you have a long running loop&lt;/p&gt; &lt;pre&gt;&lt;code&gt;func longLoop(text string){ for range time.Tick(time.Second * 1) { //long running for loop fmt.Println(&amp;quot;Results of long calculation are:&amp;quot; + someValue) //keep listening to channel for user&amp;#39;s keyboard entered value if(len(text)&amp;gt;0 ){ fmt.Println(&amp;quot;Hey you typed:&amp;quot; + text) } } } func main() { go longLoop(&amp;quot;&amp;quot;) go readKeyBoard() time.Sleep(time.Second * 10000000) } &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Now I want to type some text, maybe just a word while this program is running and use that keyboard input. I know from my learning that I can capture the keyboard input as follows&lt;/p&gt; &lt;p&gt;&amp;#x200B;&lt;/p&gt; &lt;pre&gt;&lt;code&gt;func readKeyboard() { scanner := bufio.NewScanner(os.Stdin) for scanner.Scan() { fmt.Println(scanner.Text()) //put the scanner.Text() value on a channel } } &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;I tried passing in a channel for strings, to both routines and setting the keyboard input value to the channel. Somehow, I am unable to get it to work. The idea was that whatever is typed by keyboard will be put on a channel as input. The same channel will be read in the long loop function and used.&lt;/p&gt; &lt;p&gt;I thought that the main function can launch both go routines and a common channel would be the data carrier between the two. Somehow, all the examples shown do not address what I am trying to do.&lt;/p&gt; &lt;p&gt;I am a newbie to Go and request your help.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href=&quot;https://www.reddit.com/user/naturalizedcitizen&quot;&gt; /u/naturalizedcitizen &lt;/a&gt; &lt;br/&gt; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnwle4/how_to_pass_keyboard_input_to_a_running_program/&quot;&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnwle4/how_to_pass_keyboard_input_to_a_running_program/&quot;&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <id>t3_bnwle4</id>
+    <link href="https://www.reddit.com/r/golang/comments/bnwle4/how_to_pass_keyboard_input_to_a_running_program/" />
+    <updated>2019-05-13T00:58:25+00:00</updated>
+    <title>How to pass keyboard input to a running program?</title>
+  </entry>
+  <entry>
+    <author>
+      <name>/u/Spaceface16518</name>
+      <uri>https://www.reddit.com/user/Spaceface16518</uri>
+    </author>
+    <category term="golang" label="r/golang"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class=&quot;md&quot;&gt;&lt;p&gt;I&amp;#39;ve been learning Golang and as an exercise, I decided to try and implement a thread pool (or in this case a goroutine pool) because there seems to be a lot of implementations &lt;a href=&quot;https://awesome-go.com/#goroutines&quot;&gt;out there&lt;/a&gt;. I know &lt;a href=&quot;https://github.com/Spaceface16518/splash&quot;&gt;my implementation&lt;/a&gt; is probably not that flexible or performant, but it was still helpful.&lt;/p&gt; &lt;p&gt;Like most languages these days, Go has support for higher-order functions, which comes in handy for this exercise. My pool&amp;#39;s execution function takes a function with the signature &lt;code&gt;func(...interface{}) error&lt;/code&gt; and takes &lt;code&gt;...interface{}&lt;/code&gt; as arguments to the function provided. (all in all, &lt;code&gt;func (pool *Pool) Exec(f func(...interface{}) error, args ...interface{})&lt;/code&gt;)&lt;/p&gt; &lt;p&gt;However, Go&amp;#39;s anonymous functions capture their environment at the time of their instantiation. I realized this is a problem for me when I was trying to benchmark my pool against the spin-up-a-goroutine-for-every-operation method using a concurrent Fibonacci function.&lt;/p&gt; &lt;p&gt;This is my control (no concurrency)&lt;/p&gt; &lt;pre&gt;&lt;code&gt;var a, b int64 = 0, 1 for i := 0; i &amp;lt; 100; i++ { a = a + b a, b = b, a } &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;which produces the result &lt;code&gt;3736710778780434371&lt;/code&gt;&lt;/p&gt; &lt;p&gt;When I went to write the concurrent version, I realized that Go would capture the variables at instantiation time if I did something like this&lt;/p&gt; &lt;pre&gt;&lt;code&gt;var numAActual, numBActual int64 = 0, 1 pool := splash.NewPool(25, 50) // 25 goroutines, buffer size of 50 for j := 0; j &amp;lt; 100; j++ { pool.Exec(func(args ...interface{}) error { args[0].(int64) = args[0].(int64) + args[1].(int64) args[0].(int64), args[1].(int64) = args[1].(int64), args[0].(int64) return nil }, numAActual, numBActual) } &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;or even this&lt;/p&gt; &lt;pre&gt;&lt;code&gt;var numAActual, numBActual int64 = 0, 1 pool := splash.NewPool(25, 50) // 25 goroutines, buffer size of 50 for j := 0; j &amp;lt; 100; j++ { pool.Exec(func(args ...interface{}) error { *args[0].(*int64) = *args[0].(*int64) + *args[1].(*int64) *args[0].(*int64), *args[1].(*int64) = *args[1].(*int64), *args[0].(*int64) return nil }, &amp;amp;numAActual, &amp;amp;numBActual) } &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Using the second version, I&amp;#39;ve gotten varying results, from &lt;code&gt;1&lt;/code&gt; to &lt;code&gt;-4953053512429003327&lt;/code&gt; to &lt;code&gt;86267571272&lt;/code&gt;&lt;/p&gt; &lt;p&gt;It is obvious, both that this is wrong, and what is happening (at least I think it is), but I don&amp;#39;t know how to work around it.&lt;/p&gt; &lt;p&gt;Is there any way I can capture variables at the time an anonymous function is executed rather than when it is instantiated?&lt;/p&gt; &lt;p&gt;Any help is appreciated! Thanks!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href=&quot;https://www.reddit.com/user/Spaceface16518&quot;&gt; /u/Spaceface16518 &lt;/a&gt; &lt;br/&gt; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnvn5m/how_do_i_capture_variables_at_time_of_an/&quot;&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnvn5m/how_do_i_capture_variables_at_time_of_an/&quot;&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <id>t3_bnvn5m</id>
+    <link href="https://www.reddit.com/r/golang/comments/bnvn5m/how_do_i_capture_variables_at_time_of_an/" />
+    <updated>2019-05-12T23:21:46+00:00</updated>
+    <title>How do I capture variables at time of an anonymous function's execution?</title>
+  </entry>
+  <entry>
+    <author>
+      <name>/u/samonzeweb</name>
+      <uri>https://www.reddit.com/user/samonzeweb</uri>
+    </author>
+    <category term="golang" label="r/golang"/>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href=&quot;https://www.reddit.com/user/samonzeweb&quot;&gt; /u/samonzeweb &lt;/a&gt; &lt;br/&gt; &lt;span&gt;&lt;a href=&quot;https://github.com/samonzeweb/profilinggo&quot;&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnnahw/github_samonzewebprofilinggo_a_quick_tour_or/&quot;&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <id>t3_bnnahw</id>
+    <link href="https://www.reddit.com/r/golang/comments/bnnahw/github_samonzewebprofilinggo_a_quick_tour_or/" />
+    <updated>2019-05-12T09:43:48+00:00</updated>
+    <title>GitHub - samonzeweb/profilinggo: A quick tour (or reminder) of Go performance tools</title>
+  </entry>
+  <entry>
+    <author>
+      <name>/u/AtomicOrbital</name>
+      <uri>https://www.reddit.com/user/AtomicOrbital</uri>
+    </author>
+    <category term="golang" label="r/golang"/>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href=&quot;https://www.reddit.com/user/AtomicOrbital&quot;&gt; /u/AtomicOrbital &lt;/a&gt; &lt;br/&gt; &lt;span&gt;&lt;a href=&quot;http://libmill.org/&quot;&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bncg3z/gostyle_concurrency_in_c/&quot;&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <id>t3_bncg3z</id>
+    <link href="https://www.reddit.com/r/golang/comments/bncg3z/gostyle_concurrency_in_c/" />
+    <updated>2019-05-11T14:09:10+00:00</updated>
+    <title>Go-style concurrency in C</title>
+  </entry>
+  <entry>
+    <author>
+      <name>/u/mrbullian</name>
+      <uri>https://www.reddit.com/user/mrbullian</uri>
+    </author>
+    <category term="golang" label="r/golang"/>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href=&quot;https://www.reddit.com/user/mrbullian&quot;&gt; /u/mrbullian &lt;/a&gt; &lt;br/&gt; &lt;span&gt;&lt;a href=&quot;https://medium.com/@boltmick1/10-programming-books-you-need-to-read-20-90aa58292a51&quot;&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnk4hu/10_programming_books_you_need_to_read_2019/&quot;&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <id>t3_bnk4hu</id>
+    <link href="https://www.reddit.com/r/golang/comments/bnk4hu/10_programming_books_you_need_to_read_2019/" />
+    <updated>2019-05-12T02:21:48+00:00</updated>
+    <title>10 Programming Books you Need to Read 2019</title>
+  </entry>
+  <entry>
+    <author>
+      <name>/u/dowitex</name>
+      <uri>https://www.reddit.com/user/dowitex</uri>
+    </author>
+    <category term="golang" label="r/golang"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class=&quot;md&quot;&gt;&lt;p&gt;Hi all!&lt;/p&gt; &lt;p&gt;I have an encrypt function:&lt;/p&gt; &lt;p&gt;&lt;code&gt;go func EncryptAES(plaintext []byte, key []byte, reader io.Reader) (ciphertext []byte, err error) { block, err := aes.NewCipher(key) if err != nil { return nil, fmt.Errorf(&amp;quot;EncryptAES: %s&amp;quot;, err) } ciphertext = make([]byte, aes.BlockSize+len(plaintext)) iv := ciphertext[:aes.BlockSize] _, err = io.ReadFull(reader, iv) if err != nil { return nil, fmt.Errorf(&amp;quot;EncryptAES: %s&amp;quot;, err) } stream := cipher.NewCFBEncrypter(block, iv) stream.XORKeyStream(ciphertext[aes.BlockSize:], plaintext) return ciphertext, nil } &lt;/code&gt;&lt;/p&gt; &lt;p&gt;Where I pass the &lt;code&gt;io.Reader&lt;/code&gt; as a parameter so that I can easily unit test it with a fake reader and not &lt;code&gt;cryptorand.Reader&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;However, this forces an external user to pass this parameter &lt;code&gt;cryptorand.Reader&lt;/code&gt; to that encrypt API function.&lt;/p&gt; &lt;p&gt;Would there be a better way to implement this such that the io.Reader is hidden from the external user (out of the package) but where the function is unit testable?&lt;/p&gt; &lt;p&gt;Thanks!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href=&quot;https://www.reddit.com/user/dowitex&quot;&gt; /u/dowitex &lt;/a&gt; &lt;br/&gt; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnqg2m/is_my_encrypt_function_good_for_unit_testing/&quot;&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnqg2m/is_my_encrypt_function_good_for_unit_testing/&quot;&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <id>t3_bnqg2m</id>
+    <link href="https://www.reddit.com/r/golang/comments/bnqg2m/is_my_encrypt_function_good_for_unit_testing/" />
+    <updated>2019-05-12T15:54:55+00:00</updated>
+    <title>Is my encrypt function good for unit testing?</title>
+  </entry>
+  <entry>
+    <author>
+      <name>/u/suyashkumar</name>
+      <uri>https://www.reddit.com/user/suyashkumar</uri>
+    </author>
+    <category term="golang" label="r/golang"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class=&quot;md&quot;&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/suyashkumar/ssl-proxy&quot;&gt;https://github.com/suyashkumar/ssl-proxy&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Feel free to send over any thoughts or suggestions!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href=&quot;https://www.reddit.com/user/suyashkumar&quot;&gt; /u/suyashkumar &lt;/a&gt; &lt;br/&gt; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnm668/sslproxy_simple_cli_proxy_to_generate_serve_real/&quot;&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnm668/sslproxy_simple_cli_proxy_to_generate_serve_real/&quot;&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <id>t3_bnm668</id>
+    <link href="https://www.reddit.com/r/golang/comments/bnm668/sslproxy_simple_cli_proxy_to_generate_serve_real/" />
+    <updated>2019-05-12T06:45:14+00:00</updated>
+    <title>ssl-proxy: simple CLI proxy to generate &amp; serve real SSL/TLS certs for any server (LetsEncrypt, self-signed, provided)</title>
+  </entry>
+  <entry>
+    <author>
+      <name>/u/compcyber</name>
+      <uri>https://www.reddit.com/user/compcyber</uri>
+    </author>
+    <category term="golang" label="r/golang"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class=&quot;md&quot;&gt;&lt;p&gt;Were there any Golang sessions at Google IO this year? I did not find them at on the Google Developers youtube channel&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href=&quot;https://www.reddit.com/user/compcyber&quot;&gt; /u/compcyber &lt;/a&gt; &lt;br/&gt; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnksii/golang_sessions_at_google_io_19/&quot;&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnksii/golang_sessions_at_google_io_19/&quot;&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <id>t3_bnksii</id>
+    <link href="https://www.reddit.com/r/golang/comments/bnksii/golang_sessions_at_google_io_19/" />
+    <updated>2019-05-12T03:37:45+00:00</updated>
+    <title>Golang sessions at Google IO 19</title>
+  </entry>
+  <entry>
+    <author>
+      <name>/u/tomcam</name>
+      <uri>https://www.reddit.com/user/tomcam</uri>
+    </author>
+    <category term="golang" label="r/golang"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class=&quot;md&quot;&gt;&lt;p&gt;Trying to get OAuth2 working with the eBay API using the &lt;a href=&quot;https://golang.org/x/oauth2&quot;&gt;golang.org/x/oauth2&lt;/a&gt; package.&lt;/p&gt; &lt;p&gt;I have reduced the problem to the minimal possible demonstration in a gist at&lt;/p&gt; &lt;p&gt;&lt;a href=&quot;https://gist.github.com/tomcam/08460a1b0ed71b48cfd02be0cc3a6592&quot;&gt;https://gist.github.com/tomcam/08460a1b0ed71b48cfd02be0cc3a6592&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Here&amp;#39;s the sequence of events.&lt;/p&gt; &lt;p&gt;When you vist the root directory it is supposed to take you to eBay to sign in (as a sandbox user). It does so. When you sign in with a proper username and password, it&amp;#39;s supposed to take you to a page asking you to give permission to the app to make changes to the account. It does so. It then takes you to the authorization accepted page specified by the RuName, which it does. At that point it&amp;#39;s supposed to supply you with a long string the &amp;amp;code parameter representing the permission. And it does! I can see it the successfully returned token in the address bar of the browser!&lt;/p&gt; &lt;p&gt;However, when I use FormValue() or any other way to inspect the &amp;amp;code parameter, it returns an empty string, so as you see in the gist it displays the &amp;quot;Dude&amp;quot; error message.&lt;/p&gt; &lt;p&gt;Only the secrets have been changed in the gist. Obviously I couldn&amp;#39;t get as far as the as the authorization accepted page if I had them wrong.&lt;/p&gt; &lt;p&gt;Can anyone help me? If I had hair I&amp;#39;d be pulling it out.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href=&quot;https://www.reddit.com/user/tomcam&quot;&gt; /u/tomcam &lt;/a&gt; &lt;br/&gt; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bni82f/oauth2_fail/&quot;&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bni82f/oauth2_fail/&quot;&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <id>t3_bni82f</id>
+    <link href="https://www.reddit.com/r/golang/comments/bni82f/oauth2_fail/" />
+    <updated>2019-05-11T23:02:03+00:00</updated>
+    <title>OAuth2 fail!</title>
+  </entry>
+  <entry>
+    <author>
+      <name>/u/phpflow</name>
+      <uri>https://www.reddit.com/user/phpflow</uri>
+    </author>
+    <category term="golang" label="r/golang"/>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href=&quot;https://www.reddit.com/user/phpflow&quot;&gt; /u/phpflow &lt;/a&gt; &lt;br/&gt; &lt;span&gt;&lt;a href=&quot;https://www.phpflow.com/golang/simple-example-of-golang-array/&quot;&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnlggy/simple_example_of_golang_array_phpflowcom/&quot;&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <id>t3_bnlggy</id>
+    <link href="https://www.reddit.com/r/golang/comments/bnlggy/simple_example_of_golang_array_phpflowcom/" />
+    <updated>2019-05-12T05:02:05+00:00</updated>
+    <title>Simple Example Of Golang Array - Phpflow.com</title>
+  </entry>
+  <entry>
+    <author>
+      <name>/u/GoGazette</name>
+      <uri>https://www.reddit.com/user/GoGazette</uri>
+    </author>
+    <category term="golang" label="r/golang"/>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href=&quot;https://www.reddit.com/user/GoGazette&quot;&gt; /u/GoGazette &lt;/a&gt; &lt;br/&gt; &lt;span&gt;&lt;a href=&quot;http://www.go-gazette.com/issues/extending-gotests-for-strict-error-tests-to-orm-or-not-to-orm-goat-more-176764&quot;&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bndske/edition_54_of_the_go_gazette/&quot;&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <id>t3_bndske</id>
+    <link href="https://www.reddit.com/r/golang/comments/bndske/edition_54_of_the_go_gazette/" />
+    <updated>2019-05-11T16:15:58+00:00</updated>
+    <title>Edition #54 of the Go Gazette</title>
+  </entry>
+  <entry>
+    <author>
+      <name>/u/SavageFerret</name>
+      <uri>https://www.reddit.com/user/SavageFerret</uri>
+    </author>
+    <category term="golang" label="r/golang"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class=&quot;md&quot;&gt;&lt;p&gt;Hey all, I&amp;#39;m starting a small project that uses a third parties API, and figured it would be a good time to finally dive into Go. I&amp;#39;m consuming JSON from a third party API with Go, and am serving it back to the front end. This conceptually makes sense to me but trying to find the right keywords to search for examples is tough.&lt;/p&gt; &lt;p&gt;browser GET request to Go web server -&amp;gt; Go GET request to third party API -&amp;gt; Go serves json to browser&lt;/p&gt; &lt;p&gt;here&amp;#39;s the very simplified code&lt;/p&gt; &lt;pre&gt;&lt;code&gt;func getData(w http.ResponseWriter, r *http.Request) { url := &amp;quot;https://jsonplaceholder.typicode.com/todos/1&amp;quot; req, _ := http.NewRequest(&amp;quot;GET&amp;quot;, url, nil) client := &amp;amp;http.Client{} resp, _ := client.Do(req) w.Header().Set(&amp;quot;Content-type&amp;quot;, &amp;quot;application/json&amp;quot;) defer resp.Body.Close() // Method one io.Copy(w, resp.Body) // Method two var data map[string]interface{} json.NewDecoder(resp.Body).Decode(&amp;amp;data) js, _ := json.Marshal(data) w.Write(js) } &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Both method one and two work, but I&amp;#39;m wondering if ones more preferred? My current goal is simply to just echo the JSON response to the frontend&lt;/p&gt; &lt;p&gt;Also, is it normal to build a struct to match every API calls response format? I&amp;#39;m currently just using a map in method two, it seems kinda cumbersome to build a struct for all the API calls I&amp;#39;d make from the backend&lt;/p&gt; &lt;p&gt;Let me know if I&amp;#39;m misunderstanding something conceptually and going about this wrong way, thank you!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href=&quot;https://www.reddit.com/user/SavageFerret&quot;&gt; /u/SavageFerret &lt;/a&gt; &lt;br/&gt; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bniqal/noobs_web_server_questions/&quot;&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bniqal/noobs_web_server_questions/&quot;&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <id>t3_bniqal</id>
+    <link href="https://www.reddit.com/r/golang/comments/bniqal/noobs_web_server_questions/" />
+    <updated>2019-05-11T23:54:57+00:00</updated>
+    <title>Noob's web server questions</title>
+  </entry>
+  <entry>
+    <author>
+      <name>/u/bobheadxi</name>
+      <uri>https://www.reddit.com/user/bobheadxi</uri>
+    </author>
+    <category term="golang" label="r/golang"/>
+    <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href=&quot;https://www.reddit.com/user/bobheadxi&quot;&gt; /u/bobheadxi &lt;/a&gt; &lt;br/&gt; &lt;span&gt;&lt;a href=&quot;https://github.com/bobheadxi/twist&quot;&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bn97vc/twist_generate_static_pages_to_set_up_custom/&quot;&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <id>t3_bn97vc</id>
+    <link href="https://www.reddit.com/r/golang/comments/bn97vc/twist_generate_static_pages_to_set_up_custom/" />
+    <updated>2019-05-11T06:53:09+00:00</updated>
+    <title>twist - generate static pages to set up custom imports for your packages</title>
+  </entry>
+  <entry>
+    <author>
+      <name>/u/Bestbug</name>
+      <uri>https://www.reddit.com/user/Bestbug</uri>
+    </author>
+    <category term="golang" label="r/golang"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class=&quot;md&quot;&gt;&lt;p&gt;Hi guys,&lt;/p&gt; &lt;p&gt;I created with a friend some times ago a neural network library Rprop+ with He-et-al Initialization optimization without using external dependencies. I hope it can be useful for you!&lt;/p&gt; &lt;p&gt;Link: &lt;a href=&quot;https://github.com/bestbug456/gorpropplus&quot;&gt;https://github.com/bestbug456/gorpropplus&lt;/a&gt;&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href=&quot;https://www.reddit.com/user/Bestbug&quot;&gt; /u/Bestbug &lt;/a&gt; &lt;br/&gt; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnaqlq/gorpropplus_is_our_rprop_implementation_with/&quot;&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnaqlq/gorpropplus_is_our_rprop_implementation_with/&quot;&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <id>t3_bnaqlq</id>
+    <link href="https://www.reddit.com/r/golang/comments/bnaqlq/gorpropplus_is_our_rprop_implementation_with/" />
+    <updated>2019-05-11T10:39:37+00:00</updated>
+    <title>gorpropplus is our rprop implementation with He-et-al Initialization</title>
+  </entry>
+  <entry>
+    <author>
+      <name>/u/uragnorson</name>
+      <uri>https://www.reddit.com/user/uragnorson</uri>
+    </author>
+    <category term="golang" label="r/golang"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class=&quot;md&quot;&gt;&lt;p&gt;I was watching this Stanford Course and I was intrigued when the lecturer gave the example of ATMs -- &lt;a href=&quot;https://youtu.be/Ps8jOj7diA0?t=550&quot;&gt;https://youtu.be/Ps8jOj7diA0?t=550&lt;/a&gt; (9:00)&lt;/p&gt; &lt;p&gt;&amp;#x200B;&lt;/p&gt; &lt;p&gt;My question is lets say you have a shared resource (bank) and two processes (ATMs) and they are all synced time wise. There is $100 and at the EXACT time I execute a withdraw of $100 from both ATMs how is the bank able to determine the validity of the request? I understand you can lock, do transaction, and unlock but what happens if the transaction is exactly at the same time. &lt;/p&gt; &lt;p&gt;&amp;#x200B;&lt;/p&gt; &lt;p&gt;I know in the real world there is slippage in time but this is more of a theoretical question.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href=&quot;https://www.reddit.com/user/uragnorson&quot;&gt; /u/uragnorson &lt;/a&gt; &lt;br/&gt; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnbsol/general_concurrency_question/&quot;&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnbsol/general_concurrency_question/&quot;&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <id>t3_bnbsol</id>
+    <link href="https://www.reddit.com/r/golang/comments/bnbsol/general_concurrency_question/" />
+    <updated>2019-05-11T12:59:22+00:00</updated>
+    <title>General Concurrency Question</title>
+  </entry>
+  <entry>
+    <author>
+      <name>/u/Poutrator</name>
+      <uri>https://www.reddit.com/user/Poutrator</uri>
+    </author>
+    <category term="golang" label="r/golang"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class=&quot;md&quot;&gt;&lt;p&gt;I don&amp;#39;t observe the copy-linking behaviour for structs containing complex types. The blog post is at this link &lt;a href=&quot;https://flaviocopes.com/go-copying-structs/&quot;&gt;https://flaviocopes.com/go-copying-structs/&lt;/a&gt; What I am missing ? &lt;/p&gt; &lt;p&gt;I run a test here &lt;a href=&quot;https://play.golang.org/p/Exk1Rb6BEBR&quot;&gt;https://play.golang.org/p/Exk1Rb6BEBR&lt;/a&gt; and with the testing framework. &lt;/p&gt; &lt;pre&gt;&lt;code&gt;func TestCopy(t *testing.T) { pod := Pod{position: Dot{10280, 2663}, vx: 434, vy: 41, angle: 46, hasShieldOn: false, nextCpID: 2, radius: 400.0} newPod := pod pod.position = Dot{0, 0} if newPod.position.x == pod.position.x || newPod.position.y == pod.position.y { t.Errorf(&amp;quot;positions have been changed even if different variables&amp;quot;) } &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;}&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href=&quot;https://www.reddit.com/user/Poutrator&quot;&gt; /u/Poutrator &lt;/a&gt; &lt;br/&gt; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnh355/read_a_blog_about_copying_structs_in_go_i_dont/&quot;&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnh355/read_a_blog_about_copying_structs_in_go_i_dont/&quot;&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <id>t3_bnh355</id>
+    <link href="https://www.reddit.com/r/golang/comments/bnh355/read_a_blog_about_copying_structs_in_go_i_dont/" />
+    <updated>2019-05-11T21:11:40+00:00</updated>
+    <title>Read a blog about copying structs in GO. I don't notice the same behavior in my tests. What am I missing ?</title>
+  </entry>
+  <entry>
+    <author>
+      <name>/u/CaoticMoments</name>
+      <uri>https://www.reddit.com/user/CaoticMoments</uri>
+    </author>
+    <category term="golang" label="r/golang"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class=&quot;md&quot;&gt;&lt;p&gt;Hello,&lt;/p&gt; &lt;p&gt;I inherited a golang codebase for a school project that I need to extend from, when trying to build it, I am getting the &lt;a href=&quot;https://prnt.sc/nnf1ko&quot;&gt;following&lt;/a&gt; error message.&lt;/p&gt; &lt;p&gt;I&amp;#39;ve tried adding a comma to the end of the line with the same message showing up. &lt;/p&gt; &lt;p&gt;I googled it, but not much help came up (or I googled the wrong thing). &lt;/p&gt; &lt;p&gt;Can anyone please help or direct me to somewhere better for research.&lt;/p&gt; &lt;p&gt;Thanks!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href=&quot;https://www.reddit.com/user/CaoticMoments&quot;&gt; /u/CaoticMoments &lt;/a&gt; &lt;br/&gt; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnkg6p/inherited_a_go_codebase_and_am_getting_an_error/&quot;&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnkg6p/inherited_a_go_codebase_and_am_getting_an_error/&quot;&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <id>t3_bnkg6p</id>
+    <link href="https://www.reddit.com/r/golang/comments/bnkg6p/inherited_a_go_codebase_and_am_getting_an_error/" />
+    <updated>2019-05-12T02:57:31+00:00</updated>
+    <title>Inherited a Go codebase and am getting an error that Google isn't helping with</title>
+  </entry>
+  <entry>
+    <author>
+      <name>/u/TapirLiu</name>
+      <uri>https://www.reddit.com/user/TapirLiu</uri>
+    </author>
+    <category term="golang" label="r/golang"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class=&quot;md&quot;&gt;&lt;p&gt;2.5 years after the start of writing &amp;quot;Go 101&amp;quot;, the book reaches a new milestone. The &lt;a href=&quot;https://github.com/go101/go101/releases/tag/v1.12.c&quot;&gt;eBook versions of this book&lt;/a&gt; are available now.&lt;/p&gt; &lt;p&gt;Many thanks to all contributors of this book for fixing countless mistakes in this book since the public release at the last year.&lt;/p&gt; &lt;p&gt;Special thanks to the &lt;a href=&quot;https://github.com/bmaupin/go-epub&quot;&gt;go-epub project&lt;/a&gt; and &lt;a href=&quot;https://calibre-ebook.com/&quot;&gt;the calibre software&lt;/a&gt; in making these eBooks.&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href=&quot;https://www.reddit.com/user/TapirLiu&quot;&gt; /u/TapirLiu &lt;/a&gt; &lt;br/&gt; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bmzyn1/go_101_ebooks_are_available_now/&quot;&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bmzyn1/go_101_ebooks_are_available_now/&quot;&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <id>t3_bmzyn1</id>
+    <link href="https://www.reddit.com/r/golang/comments/bmzyn1/go_101_ebooks_are_available_now/" />
+    <updated>2019-05-10T15:52:49+00:00</updated>
+    <title>Go 101 eBooks are available now!</title>
+  </entry>
+  <entry>
+    <author>
+      <name>/u/RiseofRice</name>
+      <uri>https://www.reddit.com/user/RiseofRice</uri>
+    </author>
+    <category term="golang" label="r/golang"/>
+    <content type="html">&lt;!-- SC_OFF --&gt;&lt;div class=&quot;md&quot;&gt;&lt;p&gt;Hello Gophers, the title says it all. Currently I am looking for resources to learn and understand the basics about go. Could you possibly recommend a good course or a helpful book? Of course I could also read through the enormously helpful docs, but I personally prefer to read a good book about programming languages that I try to learn. Excuse my English. I am a bit rusty in writing texts. Thanks in advance!&lt;/p&gt; &lt;/div&gt;&lt;!-- SC_ON --&gt; &amp;#32; submitted by &amp;#32; &lt;a href=&quot;https://www.reddit.com/user/RiseofRice&quot;&gt; /u/RiseofRice &lt;/a&gt; &lt;br/&gt; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnitfc/looking_for_some_ressources_to_learn_go/&quot;&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/golang/comments/bnitfc/looking_for_some_ressources_to_learn_go/&quot;&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+    <id>t3_bnitfc</id>
+    <link href="https://www.reddit.com/r/golang/comments/bnitfc/looking_for_some_ressources_to_learn_go/" />
+    <updated>2019-05-12T00:04:04+00:00</updated>
+    <title>Looking for some ressources to learn Go</title>
+  </entry>
+</feed>

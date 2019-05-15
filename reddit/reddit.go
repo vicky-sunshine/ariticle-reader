@@ -1,46 +1,54 @@
+// Package reddit provide the client and function for reading articles from reddit rss
+// Ref:
+// - reddit rss: https://www.reddit.com/wiki/rss
+// - atom feed format: https://en.wikipedia.org/wiki/Atom_(Web_standard)
 package reddit
 
 import (
+	"artread/rssfetch"
 	"fmt"
-	"hn-reader/rssfetch"
 	"strings"
 	"time"
 )
 
-type RedditArticle struct {
+// RdtArticle define the field of reddit post, and
+// implements the Article interface
+type RdtArticle struct {
 	ID     string
 	Time   int64
 	Title  string
 	Author string
 }
 
-func (rda RedditArticle) GetID() string {
+func (rda RdtArticle) GetID() string {
 	return rda.ID
 }
-func (rda RedditArticle) GetTitle() string {
+func (rda RdtArticle) GetTitle() string {
 	return rda.Title
 }
-func (rda RedditArticle) GetAuthor() string {
+func (rda RdtArticle) GetAuthor() string {
 	return rda.Author
 }
-func (rda RedditArticle) GetTimestamp() int64 {
+func (rda RdtArticle) GetTimestamp() int64 {
 	return rda.Time
 }
 
-type RedditReader struct {
+// RdtReader implements Reader interface to read reddit rss
+// You can take artread/rssfetch as tool to fetch
+type RdtReader struct {
 	apiBase string
 }
 
-func NewRedditReader(apiBase string) *RedditReader {
-	rdr := &RedditReader{}
+func NewRdtReader(apiBase string) *RdtReader {
+	rdr := &RdtReader{}
 	rdr.apiBase = apiBase
 	return rdr
 }
 
-func (rdr *RedditReader) GetArticle(id string) (RedditArticle, error) {
+func (rdr *RdtReader) GetArticle(id string) (RdtArticle, error) {
 	feed, err := rssfetch.Fetch(fmt.Sprintf("%s/comments/%s/.rss", rdr.apiBase, id))
 
-	var rds RedditArticle
+	var rds RdtArticle
 	if err != nil {
 		return rds, err
 	}
@@ -58,7 +66,7 @@ func (rdr *RedditReader) GetArticle(id string) (RedditArticle, error) {
 	return rds, nil
 }
 
-func (rdr *RedditReader) TopArticles(number int) ([]string, error) {
+func (rdr *RdtReader) TopArticles(number int) ([]string, error) {
 	feed, err := rssfetch.Fetch(fmt.Sprintf("%s/.rss", rdr.apiBase))
 	if err != nil {
 		return nil, err
