@@ -46,7 +46,11 @@ func TestTopArticles(t *testing.T) {
 	apiBase := fmt.Sprintf("%v/v0", hksrv.URL)
 	hnr := NewReader(apiBase)
 
-	ids, _ := hnr.TopArticles(5)
+	ids, err := hnr.TopArticles(5)
+	if err != nil {
+		t.Error(err)
+	}
+
 	target := []string{"19893682", "19895335", "19894798", "19895218", "19895766"}
 	if len(ids) != len(target) {
 		t.Errorf("got: %#v; expect: %#v", ids, target)
@@ -67,7 +71,11 @@ func TestGetArticle(t *testing.T) {
 	apiBase := fmt.Sprintf("%v/v0", hksrv.URL)
 	hnr := NewReader(apiBase)
 
-	article, _ := hnr.GetArticle("19893682")
+	article, err := hnr.GetArticle("19893682")
+	if err != nil {
+		t.Error(err)
+	}
+
 	if id := article.GetID(); id != "19893682" {
 		t.Errorf("got: %#v; expect: %#v", id, "19893682")
 	}

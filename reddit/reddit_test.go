@@ -45,7 +45,11 @@ func TestTopArticles(t *testing.T) {
 	apiBase := fmt.Sprintf("%v/r/golang", rdsrv.URL)
 	rdr := NewReader(apiBase)
 
-	ids, _ := rdr.TopArticles(5)
+	ids, err := rdr.TopArticles(5)
+	if err != nil {
+		t.Error(err)
+	}
+
 	target := []string{"bnu47l", "bnvik4", "bnyrzp", "bnmcwk", "bnzcxy"}
 	if len(ids) != len(target) {
 		t.Errorf("got: %#v; expect: %#v", ids, target)
@@ -67,7 +71,11 @@ func TestGetArticle(t *testing.T) {
 	apiBase := fmt.Sprintf("%v/r/golang", rdsrv.URL)
 	rdr := NewReader(apiBase)
 
-	article, _ := rdr.GetArticle("bnu47l")
+	article, err := rdr.GetArticle("bnu47l")
+	if err != nil {
+		t.Error(err)
+	}
+
 	if id := article.GetID(); id != "bnu47l" {
 		t.Errorf("got: %#v; expect: %#v", id, "bnu47l")
 	}
