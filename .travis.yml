@@ -7,10 +7,14 @@ go:
 - 1.12.x
 - master
 
+env:
+- GO111MODULE=on
+
 branches:
  only:
   - master
 
 # uncomment this line if your project needs to run something other than `rake`:
 script:
+  - go build
   - go test artread/... -v
