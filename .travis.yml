@@ -7,9 +7,6 @@ go:
 - 1.12.x
 - master
 
-env:
-- GO111MODULE=on
-
 branches:
  only:
   - master
