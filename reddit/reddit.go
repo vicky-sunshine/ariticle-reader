@@ -11,44 +11,44 @@ import (
 	"time"
 )
 
-// RdtArticle define the field of reddit post, and
+// Article define the field of reddit post, and
 // implements the Article interface
-type RdtArticle struct {
+type Article struct {
 	ID     string
 	Time   int64
 	Title  string
 	Author string
 }
 
-func (rda RdtArticle) GetID() string {
+func (rda Article) GetID() string {
 	return rda.ID
 }
-func (rda RdtArticle) GetTitle() string {
+func (rda Article) GetTitle() string {
 	return rda.Title
 }
-func (rda RdtArticle) GetAuthor() string {
+func (rda Article) GetAuthor() string {
 	return rda.Author
 }
-func (rda RdtArticle) GetTimestamp() int64 {
+func (rda Article) GetTimestamp() int64 {
 	return rda.Time
 }
 
-// RdtReader implements Reader interface to read reddit rss
+// Reader implements Reader interface to read reddit rss
 // You can take artread/rssfetch as tool to fetch
-type RdtReader struct {
+type Reader struct {
 	apiBase string
 }
 
-func NewRdtReader(apiBase string) *RdtReader {
-	rdr := &RdtReader{}
+func NewReader(apiBase string) *Reader {
+	rdr := &Reader{}
 	rdr.apiBase = apiBase
 	return rdr
 }
 
-func (rdr *RdtReader) GetArticle(id string) (RdtArticle, error) {
+func (rdr *Reader) GetArticle(id string) (Article, error) {
 	feed, err := rssfetch.Fetch(fmt.Sprintf("%s/comments/%s/.rss", rdr.apiBase, id))
 
-	var rds RdtArticle
+	var rds Article
 	if err != nil {
 		return rds, err
 	}
@@ -66,7 +66,7 @@ func (rdr *RdtReader) GetArticle(id string) (RdtArticle, error) {
 	return rds, nil
 }
 
-func (rdr *RdtReader) TopArticles(number int) ([]string, error) {
+func (rdr *Reader) TopArticles(number int) ([]string, error) {
 	feed, err := rssfetch.Fetch(fmt.Sprintf("%s/.rss", rdr.apiBase))
 	if err != nil {
 		return nil, err

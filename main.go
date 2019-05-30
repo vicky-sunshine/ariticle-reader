@@ -18,7 +18,7 @@ func main() {
 		Use:   "hkns",
 		Short: "Read hacker news",
 		Run: func(cmd *cobra.Command, args []string) {
-			hnr := hackernews.NewHNReader("https://hacker-news.firebaseio.com/v0")
+			hnr := hackernews.NewReader("https://hacker-news.firebaseio.com/v0")
 			list, _ := hnr.TopArticles(showNum)
 			for _, v := range list {
 				ar, _ := hnr.GetArticle(v)
@@ -31,7 +31,7 @@ func main() {
 		Use:   "rdgl",
 		Short: "Read reddit /r/golang",
 		Run: func(cmd *cobra.Command, args []string) {
-			rdr := reddit.NewRdtReader("https://www.reddit.com/r/golang")
+			rdr := reddit.NewReader("https://www.reddit.com/r/golang")
 			list, _ := rdr.TopArticles(showNum)
 			for _, v := range list {
 				ar, _ := rdr.GetArticle(v)

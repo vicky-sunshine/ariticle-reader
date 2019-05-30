@@ -9,10 +9,10 @@ import (
 	"strconv"
 )
 
-// HNArticle define the field of hacker news item, and
+// Article define the field of hacker news item, and
 // implements the Article interface
 // Ref: https://github.com/HackerNews/API#items
-type HNArticle struct {
+type Article struct {
 	By          string `json:"by"`
 	Descendants int    `json:"descendants"`
 	ID          int    `json:"id"`
@@ -27,41 +27,41 @@ type HNArticle struct {
 }
 
 // GetID implements Reader interface GetID funtion
-func (hna HNArticle) GetID() string {
+func (hna Article) GetID() string {
 	return strconv.Itoa(hna.ID)
 }
 
 // GetTitle implements Reader interface GetTitle function
-func (hna HNArticle) GetTitle() string {
+func (hna Article) GetTitle() string {
 	return hna.Title
 }
 
 // GetAuthor implements Reader interface GetAuthor function
-func (hna HNArticle) GetAuthor() string {
+func (hna Article) GetAuthor() string {
 	return hna.By
 }
 
 // GetTimestamp implements Reader interface GetTimestamp function
-func (hna HNArticle) GetTimestamp() int64 {
+func (hna Article) GetTimestamp() int64 {
 	return hna.Time
 }
 
-// HNReader implements Reader interface to read hackernews website
-type HNReader struct {
+// Reader implements Reader interface to read hackernews website
+type Reader struct {
 	apiBase string
 }
 
-// NewHNReader initialize an HNReader instance
-func NewHNReader(apiBase string) *HNReader {
-	hnr := &HNReader{}
+// NewReader initialize an Reader instance
+func NewReader(apiBase string) *Reader {
+	hnr := &Reader{}
 	hnr.apiBase = apiBase
 	return hnr
 }
 
-// GetArticle returns a certain HNArticle with given id
+// GetArticle returns a certain Article with given id
 // Ref: https://github.com/HackerNews/API#items
-func (hnr *HNReader) GetArticle(id string) (HNArticle, error) {
-	var ar HNArticle
+func (hnr *Reader) GetArticle(id string) (Article, error) {
+	var ar Article
 	resp, err := http.Get(fmt.Sprintf("%s/item/%s.json", hnr.apiBase, id))
 	if err != nil {
 		return ar, err
@@ -78,7 +78,7 @@ func (hnr *HNReader) GetArticle(id string) (HNArticle, error) {
 
 // TopArticles returns a list of top ariticles ids
 // Ref: https://github.com/HackerNews/API#new-top-and-best-stories
-func (hnr *HNReader) TopArticles(number int) ([]string, error) {
+func (hnr *Reader) TopArticles(number int) ([]string, error) {
 	resp, err := http.Get(fmt.Sprintf("%s/topstories.json", hnr.apiBase))
 	if err != nil {
 		return nil, err

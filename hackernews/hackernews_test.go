@@ -44,7 +44,7 @@ func TestTopArticles(t *testing.T) {
 	defer hksrv.Close()
 
 	apiBase := fmt.Sprintf("%v/v0", hksrv.URL)
-	hnr := NewHNReader(apiBase)
+	hnr := NewReader(apiBase)
 
 	ids, _ := hnr.TopArticles(5)
 	target := []string{"19893682", "19895335", "19894798", "19895218", "19895766"}
@@ -65,7 +65,7 @@ func TestGetArticle(t *testing.T) {
 	defer hksrv.Close()
 
 	apiBase := fmt.Sprintf("%v/v0", hksrv.URL)
-	hnr := NewHNReader(apiBase)
+	hnr := NewReader(apiBase)
 
 	article, _ := hnr.GetArticle("19893682")
 	if id := article.GetID(); id != "19893682" {

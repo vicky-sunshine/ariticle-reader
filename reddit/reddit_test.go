@@ -43,7 +43,7 @@ func TestTopArticles(t *testing.T) {
 	defer rdsrv.Close()
 
 	apiBase := fmt.Sprintf("%v/r/golang", rdsrv.URL)
-	rdr := NewRdtReader(apiBase)
+	rdr := NewReader(apiBase)
 
 	ids, _ := rdr.TopArticles(5)
 	target := []string{"bnu47l", "bnvik4", "bnyrzp", "bnmcwk", "bnzcxy"}
@@ -65,7 +65,7 @@ func TestGetArticle(t *testing.T) {
 	defer rdsrv.Close()
 
 	apiBase := fmt.Sprintf("%v/r/golang", rdsrv.URL)
-	rdr := NewRdtReader(apiBase)
+	rdr := NewReader(apiBase)
 
 	article, _ := rdr.GetArticle("bnu47l")
 	if id := article.GetID(); id != "bnu47l" {
