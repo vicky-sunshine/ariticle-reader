@@ -19,9 +19,15 @@ func main() {
 		Short: "Read hacker news",
 		Run: func(cmd *cobra.Command, args []string) {
 			hnr := hackernews.NewReader("https://hacker-news.firebaseio.com/v0")
-			list, _ := hnr.TopArticles(showNum)
+			list, err := hnr.TopArticles(showNum)
+			if err != nil {
+				panic(err)
+			}
 			for _, v := range list {
 				ar, _ := hnr.GetArticle(v)
+				if err != nil {
+					panic(err)
+				}
 				fmt.Println(article.Summarized(ar))
 			}
 		},
@@ -30,11 +36,17 @@ func main() {
 	var cmdRedditGolang = &cobra.Command{
 		Use:   "rdgl",
 		Short: "Read reddit /r/golang",
-		Run: func(cmd *cobra.Command, args []string) {
+		Run: func(cmd *cobra.Command, args [x]string) {
 			rdr := reddit.NewReader("https://www.reddit.com/r/golang")
-			list, _ := rdr.TopArticles(showNum)
+			list, err := rdr.TopArticles(showNum)
+			if err != nil {
+				panic(err)
+			}
 			for _, v := range list {
-				ar, _ := rdr.GetArticle(v)
+				ar, err := rdr.GetArticle(v)
+				if err != nil {
+					panic(err)
+				}
 				fmt.Println(article.Summarized(ar))
 			}
 		},
