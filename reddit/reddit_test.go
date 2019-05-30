@@ -52,8 +52,8 @@ func TestTopArticles(t *testing.T) {
 	}
 
 	for i, v := range target {
-		if v != target[i] {
-			t.Errorf("got: %#v; expect: %#v", v, target[i])
+		if v != ids[i] {
+			t.Errorf("got: %#v; expect: %#v", v, ids[i])
 		}
 	}
 
@@ -72,7 +72,7 @@ func TestGetArticle(t *testing.T) {
 		t.Errorf("got: %#v; expect: %#v", id, "bnu47l")
 	}
 	if title := article.GetTitle(); title != "High Performance DICOM Medical Image Parser in Golang" {
-		t.Errorf("got: %#v; expect: %#v", title, "Facebook sues analytics firm Rankwave over data misuse")
+		t.Errorf("got: %#v; expect: %#v", title, "High Performance DICOM Medical Image Parser in Golang")
 	}
 	if auth := article.GetAuthor(); auth != "/u/suyashkumar" {
 		t.Errorf("got: %#v; expect: %#v", auth, "/u/suyashkumar")

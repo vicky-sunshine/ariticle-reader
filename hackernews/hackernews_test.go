@@ -53,8 +53,8 @@ func TestTopArticles(t *testing.T) {
 	}
 
 	for i, v := range target {
-		if v != target[i] {
-			t.Errorf("got: %#v; expect: %#v", v, target[i])
+		if v != ids[i] {
+			t.Errorf("got: %#v; expect: %#v", v, ids[i])
 		}
 	}
 }
