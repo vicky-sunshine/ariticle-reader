@@ -1,4 +1,4 @@
-# Article Reader
+# Article Reader [![Build Status](https://travis-ci.org/vicky-sunshine/ariticle-reader.svg?branch=master)](https://travis-ci.org/vicky-sunshine/ariticle-reader)
 
 This is a golang exercise for our team to practice the concept of interface and package.
 
