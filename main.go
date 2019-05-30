@@ -36,7 +36,7 @@ func main() {
 	var cmdRedditGolang = &cobra.Command{
 		Use:   "rdgl",
 		Short: "Read reddit /r/golang",
-		Run: func(cmd *cobra.Command, args [x]string) {
+		Run: func(cmd *cobra.Command, args []string) {
 			rdr := reddit.NewReader("https://www.reddit.com/r/golang")
 			list, err := rdr.TopArticles(showNum)
 			if err != nil {
